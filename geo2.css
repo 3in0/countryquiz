@@ -22,3 +22,25 @@ body {
   height: 100%;
 
 }
+
+#info {
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  left: 20px;
+  right: 20px;
+  bottom: 30px;
+  height: 5vh;
+
+  font-weight: bold;
+  font-size: 2vh;
+  color: #ffcc33;
+  text-align: center;
+
+  background-color: #333;
+
+}
