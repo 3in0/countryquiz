@@ -14,9 +14,65 @@ _e = (function () {
 
 			//var aLeftCoord = window.ol.proj.transform( aLonLat, 'EPSG:4326', 'EPSG:3857' );
 
-			this.createMap('map', [0,0], 4);
+			this.createMap('map', [0,0], 3);
 
 			//this.mapPackages[ 'map-left' ].map.on("click", this.mapClicked.bind(this));
+
+			setTimeout( this.nextRound.bind( this ), 2000 );
+
+		},
+
+		nextRound: function() {
+
+			if ( !this.state.round )
+				this.state.round = 1;
+			else
+				this.state.round++;
+
+			if ( this.state.round > 10 )
+				return this.finished();
+
+			let aPackage = this.selectCountry();
+
+			let aScore = "";
+
+			//if ( this.state.total != undefined )
+			//	aScore = " (CURRENT AVERAGE DISTANCE " + ( this.state.total / ( this.state.round - 1 ) ).toFixed( 0 ) + "KM )";
+
+			document.getElementById( "info" ).innerHTML = "ROUND " + this.state.round + " of 10" + " - " + aPackage.country.toUpperCase() + aScore;
+
+		},
+
+		finished: function() {
+			
+			let aScore = "AVERAGE DISTANCE WAS " + ( this.state.total / ( this.state.round - 1 ) ).toFixed( 0 ) + "KM";
+			document.getElementById( "info" ).innerHTML = aScore;
+
+		},
+
+		selectCountry: function() {
+
+			let someCountries = this.state.countries.getSource().getFeatures();
+
+			let anIndex = Math.trunc( Math.random() * someCountries.length );
+
+			let aCountry = someCountries[ anIndex ];
+
+			let aName = aCountry.get( 'name' );
+
+			var aSource = this.state.adhoc.getSource();
+
+			aSource.forEachFeature( function( aFeature ) { aSource.removeFeature( aFeature ); } );
+
+			aSource.addFeature( aCountry );
+
+			this.state.country = aCountry;
+
+			this.state.map.getView().fit( aCountry.getGeometry().getExtent(), this.state.map.getSize() );
+
+			aSource.dispatchEvent( 'change' );
+
+			return { country: aName };
 
 		},
 
@@ -124,10 +180,15 @@ _e = (function () {
 
 				var aSource = this.state.adhoc.getSource();
 
-				aSource.forEachFeature( function( aFeature ) { aSource.removeFeature( aFeature ); } );
-
 				let aCapitalCoord = [ aPackage[ 3 ] * 1.0, aPackage[ 2 ] * 1.0 ];
-				this.state.distance = ( ol.sphere.getDistance(this.state.clickCoord, aCapitalCoord) / 1000.0 ).toFixed( 0 ) + "km";
+
+				let aDistance = ( ol.sphere.getDistance(this.state.clickCoord, aCapitalCoord) / 1000.0 );
+				this.state.distance = aDistance.toFixed( 0 ) + "km";
+
+				if ( !this.state.total )
+					this.state.total = 0;
+
+				this.state.total += aDistance;
 
 				var aFeatureJsonLine = {
 					"type": "Feature",
@@ -168,6 +229,8 @@ _e = (function () {
 				aSource.addFeature( aFeature );
 
 				aSource.dispatchEvent( 'change' );
+
+				setTimeout( this.nextRound.bind( this ), 3000 );
 		
 
 			}
@@ -248,6 +311,19 @@ _e = (function () {
 					})
 
 				} )
+			}
+			else {
+
+				console.log( "drawing country" );
+
+				return new ol.style.Style( {
+					stroke: new ol.style.Stroke({
+						color: '#ffcc33',
+						width: 2
+					  }) 
+
+					})
+
 			}
 
 		},
