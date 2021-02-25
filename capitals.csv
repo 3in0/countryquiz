@@ -7,7 +7,6 @@ American Samoa,Pago Pago,-14.275632,-170.702036
 Andorra,Andorra la Vella,42.506317,1.521835
 Angola,Luanda,-8.839988,13.289437
 Anguilla,The Valley,18.214813,-63.057441
-Antarctica,South Pole,-90,0
 Antigua and Barbuda,St. John's,17.12741,-61.846772
 Argentina,Buenos Aires,-34.603684,-58.381559
 Armenia,Yerevan,40.179186,44.499103
@@ -15,7 +14,7 @@ Aruba,Oranjestad,12.509204,-70.008631
 Australia,Canberra,-35.282,149.128684
 Austria,Vienna,48.208174,16.373819
 Azerbaijan,Baku,40.409262,49.867092
-Bahamas,Nassau,25.047984,-77.355413
+The Bahamas,Nassau,25.047984,-77.355413
 Bahrain,Manama,26.228516,50.58605
 Bangladesh,Dhaka,23.810332,90.412518
 Barbados,Bridgetown,13.113222,-59.598809
@@ -50,10 +49,10 @@ Cocos (Keeling) Islands,West Island,-12.188834,96.829316
 Colombia,Bogotá,4.710989,-74.072092
 Comoros,Moroni,-11.717216,43.247315
 Democratic Republic of the Congo,Kinshasa,-4.441931,15.266293
-Congo (Republic),Brazzaville,-4.26336,15.242885
+Congo,Brazzaville,-4.26336,15.242885
 Cook Islands,Avarua,-21.212901,-159.782306
 Costa Rica,San José,9.928069,-84.090725
-Côte d'Ivoire,Yamoussoukro,6.827623,-5.289343
+Ivory Coast,Yamoussoukro,6.827623,-5.289343
 Croatia,Zagreb ,45.815011,15.981919
 Cuba,Havana,23.05407,-82.345189
 Curaçao,Willemstad,12.122422,-68.882423
@@ -70,14 +69,14 @@ Equatorial Guinea,Malabo,3.750412,8.737104
 Eritrea,Asmara,15.322877,38.925052
 Estonia,Tallinn,59.436961,24.753575
 Ethiopia,Addis Ababa,8.980603,38.757761
-Falkland Islands (Islas Malvinas),Stanley,-51.697713,-57.851663
+Falkland Islands,Stanley,-51.697713,-57.851663
 Faroe Islands,Tórshavn,62.007864,-6.790982
 Fiji,Suva,-18.124809,178.450079
 Finland,Helsinki,60.173324,24.941025
 France,Paris,48.856614,2.352222
 French Guiana,Cayenne,4.92242,-52.313453
 French Polynesia,Papeete,-17.551625,-149.558476
-French Southern Territories,Saint-Pierre ,-21.3419,55.4778
+French Southern and Antarctic Lands,Saint-Pierre ,-21.3419,55.4778
 Gabon,Libreville,0.416198,9.467268
 Gambia,Banjul,13.454876,-16.579032
 Georgia,Tbilisi,41.715138,44.827096
@@ -92,7 +91,7 @@ Guam,Hagåtña,13.470891,144.751278
 Guatemala,Guatemala City,14.634915,-90.506882
 Guernsey,St. Peter Port,49.455443,-2.536871
 Guinea,Conakry,9.641185,-13.578401
-Guinea-Bissau,Bissau,11.881655,-15.617794
+Guinea Bissau,Bissau,11.881655,-15.617794
 Guyana,Georgetown,6.801279,-58.155125
 Haiti,Port-au-Prince,18.594395,-72.307433
 Honduras,Tegucigalpa,14.072275,-87.192136
@@ -127,7 +126,7 @@ Liechtenstein,Vaduz,47.14103,9.520928
 Lithuania,Vilnius,54.687156,25.279651
 Luxembourg,Luxembourg,49.611621,6.131935
 Macau,Macau,22.166667,113.55
-Macedonia (FYROM),Skopje,41.997346,21.427996
+Macedonia,Skopje,41.997346,21.427996
 Madagascar,Antananarivo,-18.87919,47.507905
 Malawi,Lilongwe,-13.962612,33.774119
 Malaysia,Kuala Lumpur,3.139003,101.686855
@@ -148,7 +147,7 @@ Montenegro,Podgorica,42.43042,19.259364
 Montserrat,Plymouth,16.706523,-62.215738
 Morocco,Rabat,33.97159,-6.849813
 Mozambique,Maputo,-25.891968,32.605135
-Myanmar (Burma),Naypyidaw,19.763306,96.07851
+Myanmar,Naypyidaw,19.763306,96.07851
 Nagorno-Karabakh Republic,Stepanakert,39.826385,46.763595
 Namibia,Windhoek,-22.560881,17.065755
 Nauru,Yaren,-0.546686,166.921091
@@ -199,6 +198,7 @@ Slovakia,Bratislava,48.145892,17.107137
 Slovenia,Ljubljana,46.056947,14.505751
 Solomon Islands,Honiara,-9.445638,159.9729
 Somalia,Mogadishu,2.046934,45.318162
+Somaliland,Hargeisa,9.5489828,44.0293347
 South Africa,Pretoria,-25.747868,28.229271
 South Georgia and the South Sandwich Islands,King Edward Point,-54.28325,-36.493735
 South Korea,Seoul,37.566535,126.977969
@@ -221,7 +221,7 @@ Taiwan,Taipei,25.032969,121.565418
 Tajikistan,Dushanbe,38.559772,68.787038
 Tanzania,Dodoma,-6.162959,35.751607
 Thailand,Bangkok,13.756331,100.501765
-Timor-Leste,Dili,-8.556856,125.560314
+East Timor,Dili,-8.556856,125.560314
 Togo,Lomé,6.172497,1.231362
 Tokelau,Nukunonu,-9.2005,-171.848
 Tonga,Nukuʻalofa,-21.139342,-175.204947

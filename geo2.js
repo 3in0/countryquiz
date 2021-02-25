@@ -29,7 +29,7 @@ _e = (function () {
 			else
 				this.state.round++;
 
-			if ( this.state.round > 10 )
+			if ( this.state.round > 5 )
 				return this.finished();
 
 			let aPackage = this.selectCountry();
@@ -39,7 +39,7 @@ _e = (function () {
 			//if ( this.state.total != undefined )
 			//	aScore = " (CURRENT AVERAGE DISTANCE " + ( this.state.total / ( this.state.round - 1 ) ).toFixed( 0 ) + "KM )";
 
-			document.getElementById( "info" ).innerHTML = "ROUND " + this.state.round + " of 10" + " - " + aPackage.country.toUpperCase() + aScore;
+			document.getElementById( "info" ).innerHTML = "ROUND " + this.state.round + " of 5" + " - " + aPackage.country.toUpperCase() + aScore;
 
 		},
 
@@ -54,7 +54,7 @@ _e = (function () {
 
 			let someCountries = this.state.countries.getSource().getFeatures();
 
-			let anIndex = Math.trunc( Math.random() * someCountries.length );
+			let anIndex = this.getUnusedIndex( someCountries.length );
 
 			let aCountry = someCountries[ anIndex ];
 
@@ -73,6 +73,65 @@ _e = (function () {
 			aSource.dispatchEvent( 'change' );
 
 			return { country: aName };
+
+		},
+
+		
+		validate : function() {
+
+			let someCountries = this.state.countries.getSource().getFeatures();
+
+			for ( let aCountry of someCountries ) {
+
+				let aName = aCountry.get( 'name' );
+
+				if ( aName == 'Antarctica' )
+					continue;
+
+				let aCapital = this.getCountryData( aName );
+
+				if ( !aCapital )
+					console.log( aName );
+
+			}
+		},
+
+		getUnusedIndex : function( aMax ) {
+
+			for ( let aCount = 0; aCount < 100; aCount++ ) {
+
+				let anIndex = Math.trunc( Math.random() * aMax );
+
+				if ( !this.state.usedIndex ) {
+
+					this.state.usedIndex = [ anIndex ];
+					return anIndex;
+
+				}
+				else {
+
+					let aFound = false;
+
+					for ( let aUsed of this.state.usedIndex ) {
+
+						if ( anIndex == aUsed ) {
+							aFound = true;
+							break;
+
+						}
+
+					}
+
+					if ( !aFound ) {
+
+						this.state.usedIndex.push( anIndex );
+						return anIndex;
+
+					}
+
+				}
+
+			}
 
 		},
 
