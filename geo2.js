@@ -65,6 +65,9 @@ _e = (function () {
 			var aMapCoord = this.state.map.getCoordinateFromPixel( aPixel );
 			this.state.clickCoord = ol.proj.transform( aMapCoord, 'EPSG:3857', 'EPSG:4326' );	
 
+			console.log( this.state.clickCoord[ 0 ] );
+			
+			this.state.clickCoord[ 0 ] = this.correctLon( this.state.clickCoord[ 0 ] );
 
 
 			var somePackages = [];
@@ -78,6 +81,33 @@ _e = (function () {
 			if ( somePackages.length > 0 ) 
 				this.countrySelected( somePackages[ 0 ] );
 
+		},
+		
+		correctLon : function(longitude) {
+			var correctedLongitude = parseFloat(longitude);
+			var originalLongitude = parseFloat(longitude);
+		
+			if(originalLongitude > 180 || originalLongitude <= -180) {
+
+				longitude = originalLongitude < 0 ? longitude * -1 : parseFloat(longitude);
+		
+			  var divisionResult = 0;
+			  if((originalLongitude / 180) % 2 === -0)
+				divisionResult = longitude / 180;
+			  else if((originalLongitude / 180) % 2 === -1)
+				divisionResult = (longitude / 180) + 1;
+			  else if((longitude / 180) % 1 === 0)
+				divisionResult = (longitude / 180) - 1;
+			  else if(parseInt(longitude / 180) % 2 === 0)
+				divisionResult = parseInt(longitude / 180);
+			  else
+				divisionResult = Math.ceil(longitude / 180);
+		
+			  if(divisionResult > 0)
+				correctedLongitude = (originalLongitude < 0) ? originalLongitude + (divisionResult * 180) : originalLongitude - (divisionResult * 180);
+			}
+		
+			return correctedLongitude;
 		},
 
 		countrySelected : function( aFeature ) {
