@@ -9,7 +9,7 @@ _e = (function () {
 		initialise: function () {
 
 			console.log( "v2" );
-			
+
 			this.getData();
 
 			//let aLonLat = [ 151, -33 ];
@@ -20,11 +20,15 @@ _e = (function () {
 
 			//this.mapPackages[ 'map-left' ].map.on("click", this.mapClicked.bind(this));
 
+			this.showBest();
+
 			setTimeout( this.nextRound.bind( this ), 2000 );
 
 		},
 
 		nextRound: function() {
+
+			document.getElementById( "highscore" ).style.display = "none";
 
 			if ( !this.state.round )
 				this.state.round = 1;
@@ -45,6 +49,26 @@ _e = (function () {
 
 		},
 
+		showBest: function() {
+
+			const aElement = document.getElementById( "highscore" );
+			aElement.style.display = "none";
+
+			if ( window.localStorage ) {
+
+				let aScore = localStorage.getItem( "score" );
+
+				if ( aScore ) {
+
+					aElement.innerHTML = "BEST SCORE " + aScore + "KM";
+					aElement.style.display = "flex";
+
+				}
+
+			}
+
+		},
+
 		finished: function() {
 			
 			let aScoreVal = ( this.state.total / ( this.state.round - 1 ) ).toFixed( 0 );
@@ -53,6 +77,8 @@ _e = (function () {
 			document.getElementById( "info" ).innerHTML = aScore;
 
 			this.saveScore( aScoreVal );
+
+			this.showBest();
 
 		},
 

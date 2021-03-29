@@ -26,9 +26,18 @@ body {
 #highscore {
 
   position: absolute;
-  top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  left: 20px;
+  right: 20px;
+  top: 30px;
   height: 5vh;
+
   font-size: 2vh;
+  font-weight: bold;
   background-color: #ffcc33; 
   color: black;
   text-align: center;
