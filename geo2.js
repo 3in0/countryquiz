@@ -8,6 +8,8 @@ _e = (function () {
 
 		initialise: function () {
 
+			console.log( "v2" );
+			
 			this.getData();
 
 			//let aLonLat = [ 151, -33 ];
@@ -45,8 +47,22 @@ _e = (function () {
 
 		finished: function() {
 			
-			let aScore = "AVERAGE DISTANCE WAS " + ( this.state.total / ( this.state.round - 1 ) ).toFixed( 0 ) + "KM";
+			let aScoreVal = ( this.state.total / ( this.state.round - 1 ) ).toFixed( 0 );
+			let aScore = "AVERAGE DISTANCE WAS " + aScoreVal + "KM";
+
 			document.getElementById( "info" ).innerHTML = aScore;
+
+			this.saveScore( aScoreVal );
+
+		},
+
+		saveScore: function( aScore ) {
+
+			if ( window.localStorage ) {
+
+				localStorage.setItem("score", aScore );
+
+			}
 
 		},
 

@@ -23,6 +23,18 @@ body {
 
 }
 
+#highscore {
+
+  position: absolute;
+  top: 50px;
+  height: 5vh;
+  font-size: 2vh;
+  background-color: #ffcc33; 
+  color: black;
+  text-align: center;
+
+}
+
 #info {
 
   position: absolute;
