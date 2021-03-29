@@ -60,8 +60,6 @@ _e = (function () {
 
 				if ( aScore ) {
 
-					alert( aScore );
-
 					aElement.innerHTML = "BEST SCORE " + aScore + "KM";
 					aElement.style.display = "flex";
 
