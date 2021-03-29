@@ -56,12 +56,12 @@ _e = (function () {
 
 			if ( window.localStorage ) {
 
-				let aScore = localStorage.getItem( "score" );
+				let aScore = window.localStorage.getItem( "score" );
 
 				if ( aScore ) {
 
 					alert( aScore );
-					
+
 					aElement.innerHTML = "BEST SCORE " + aScore + "KM";
 					aElement.style.display = "flex";
 
@@ -88,7 +88,7 @@ _e = (function () {
 
 			if ( window.localStorage ) {
 
-				localStorage.setItem("score", aScore );
+				window.localStorage.setItem("score", aScore );
 
 			}
 
