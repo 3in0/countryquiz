@@ -8,26 +8,21 @@ _e = (function () {
 
 		initialise: function () {
 
-			console.log( "v2" );
+			console.log( "v3" );
+
+			document.getElementById( "start" ).onclick = this.nextRound.bind( this );
 
 			this.getData();
 
-			//let aLonLat = [ 151, -33 ];
-
-			//var aLeftCoord = window.ol.proj.transform( aLonLat, 'EPSG:4326', 'EPSG:3857' );
-
 			this.createMap('map', [0,0], 3);
 
-			//this.mapPackages[ 'map-left' ].map.on("click", this.mapClicked.bind(this));
-
 			this.showBest();
-
-			setTimeout( this.nextRound.bind( this ), 2000 );
 
 		},
 
 		nextRound: function() {
 
+			document.getElementById( "button" ).style.display = "none";	
 			document.getElementById( "highscore" ).style.display = "none";
 
 			if ( !this.state.round )
@@ -42,10 +37,7 @@ _e = (function () {
 
 			let aScore = "";
 
-			//if ( this.state.total != undefined )
-			//	aScore = " (CURRENT AVERAGE DISTANCE " + ( this.state.total / ( this.state.round - 1 ) ).toFixed( 0 ) + "KM )";
-
-			document.getElementById( "info" ).innerHTML = "ROUND " + this.state.round + " of 5" + " - " + aPackage.country.toUpperCase() + aScore;
+			document.getElementById( "info-text" ).innerHTML = "ROUND " + this.state.round + " of 5" + " - " + aPackage.country.toUpperCase() + aScore;
 
 		},
 
@@ -74,11 +66,16 @@ _e = (function () {
 			let aScoreVal = ( this.state.total / ( this.state.round - 1 ) ).toFixed( 0 );
 			let aScore = "AVERAGE DISTANCE WAS " + aScoreVal + "KM";
 
-			document.getElementById( "info" ).innerHTML = aScore;
+			document.getElementById( "info-text" ).innerHTML = aScore;
+			document.getElementById( "start" ).innerHTML = "RESTART";
+			document.getElementById( "button" ).style.display = "block";
 
 			this.saveScore( aScoreVal );
 
 			this.showBest();
+
+			this.state.round = undefined;
+			this.state.total = undefined;
 
 		},
 
@@ -86,7 +83,10 @@ _e = (function () {
 
 			if ( window.localStorage ) {
 
-				window.localStorage.setItem("score", aScore );
+				let aPrevious = window.localStorage.getItem( "score" );
+
+				if ( !aPrevious || ( aPrevious * 1 ) > aScore )
+					window.localStorage.setItem("score", aScore );
 
 			}
 
@@ -271,11 +271,7 @@ _e = (function () {
 
 			let aName = aFeature.get( 'name' );
 
-			console.log( aName );
-
 			let aPackage = this.getCountryData( aName );
-
-			console.log( aPackage );
 
 			if ( aPackage ) {
 
